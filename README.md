@@ -9,7 +9,7 @@ To develop a comprehensive credit card weekly dashboard that provides real-time 
 3) import csv file into SQL
 
 ## DAX Queries
-AgeGroup = SWITCH(
+1) AgeGroup = SWITCH(
                    TRUE(),
                    cust_detail[Customer_Age] < 30, "20-30",
                    cust_detail[Customer_Age] >=30 && cust_detail[Customer_Age] < 40, "30-40",
@@ -19,7 +19,7 @@ AgeGroup = SWITCH(
                    "Unknown"
                  ))
 
-IncomeGroup = SWITCH(
+2) IncomeGroup = SWITCH(
     TRUE(),
     cust_detail[Income]<35000, "Low",
     cust_detail[Income]>=35000 && cust_detail[Income]<70000, "Med",
@@ -27,11 +27,11 @@ IncomeGroup = SWITCH(
     "Unknown"
 )
 
-week_num2 = WEEKNUM(cc[Week_Start_Date])
+3) week_num2 = WEEKNUM(cc[Week_Start_Date])
 
-Revenue = cc[Interest_Earned] + cc[Annual_Fees] + cc[Total_Trans_Amt]
+4) Revenue = cc[Interest_Earned] + cc[Annual_Fees] + cc[Total_Trans_Amt]
 
-Current_Week_Revenue = CALCULATE(
+5) Current_Week_Revenue = CALCULATE(
                                   SUM(cc[Revenue]),
                                   FILTER(
                                         ALL(cc),
@@ -40,7 +40,7 @@ Current_Week_Revenue = CALCULATE(
                                   )
 )
 
-Previous_Week_Revenue = CALCULATE(
+6) Previous_Week_Revenue = CALCULATE(
                                   SUM(cc[Revenue]),
                                   FILTER(
                                         ALL(cc),
@@ -52,14 +52,14 @@ Previous_Week_Revenue = CALCULATE(
 # Project Insights
 
 ## Overview YTD:
-Overall revenue is 55.3M
-Total interest is 7.8M
-Total transaction amount is 44.5M
-Male customers are contributing more in revenue 30.2M, female 25.1M
-Blue & Silver credit card are contributing to 93% of overall transactions
-TX, NY & CA is contributing to 68%
-Overall Activation rate is 57.5%
-Overall Delinquent rate is 6.06%
+1) Overall revenue is 55.3M
+2) Total interest is 7.8M
+3) Total transaction amount is 44.5M
+4) Male customers are contributing more in revenue 30.2M, female 25.1M
+5) Blue & Silver credit card are contributing to 93% of overall transactions
+6) TX, NY & CA is contributing to 68%
+7) Overall Activation rate is 57.5%
+8) Overall Delinquent rate is 6.06%
 
 
 
